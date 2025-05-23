@@ -21,8 +21,8 @@ keep if month == 12
 preserve
 keep year num_segments gvkey
 keep if year >= 1996 & year <= 1999
+drop if missing(num_segments)
 reshape wide num_segments, i(gvkey) j(year)
-keep if !missing(num_segments1997) & !missing(num_segments1998)
 
 gen chng_seg = num_segments1998 - num_segments1997
 
